@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: All in One SEO Author
- * Description: Adds author schema to All in One SEO
+ * Plugin Name: JSON-LD Author Schema
+ * Description: Adds author schema to various SEO plugins.
  * Author:      Velocity Growth
  * Author URI:  https://velocitygrowth.com/
  */
@@ -11,10 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$root_dir = plugin_dir_path( __FILE__ );
+
 if ( is_admin() ) {
-  require_once( plugin_dir_path( __FILE__ ) . 'profile.php' );
+  require_once( $root_dir . 'profile.php' );
 } else {
-  require_once( plugin_dir_path( __FILE__ ) . 'inject.php' );
+  require_once( $root_dir . 'inject/common.php' );
+  require_once( $root_dir . 'inject/aioseo.php' );
+  require_once( $root_dir . 'inject/smartcrawl.php' );
 }
 
 

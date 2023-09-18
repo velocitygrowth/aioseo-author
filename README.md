@@ -1,3 +1,3 @@
-# AIOSEO Advance Author Schema
+# JSON-LD Author Schema
 
-Gives you the ability to control the JSON+LD schema for authors in WordPress when using AIOSEO.
+Gives you the ability to control the JSON+LD schema for authors in WordPress with various SEO plugins.
