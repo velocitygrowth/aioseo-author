@@ -19,6 +19,7 @@ if ( is_admin() ) {
   require_once( $root_dir . 'inject/common.php' );
   require_once( $root_dir . 'inject/aioseo.php' );
   require_once( $root_dir . 'inject/smartcrawl.php' );
+  require_once( $root_dir . 'inject/yoast.php' );
 }
 
 
