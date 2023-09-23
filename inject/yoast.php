@@ -5,10 +5,12 @@
  */
 namespace JSON_LD_Author_Plugin;
 
-\add_filter( 'wpseo_schema_person_data', 'JSON_LD_Author_Plugin\yoast_schema_change_person', 999, 2 );
+use Yoast\WP\SEO\Helpers\Schema\ID_Helper;
 
+// Author (Person) of an Article
+\add_filter( 'wpseo_schema_person_data', 'JSON_LD_Author_Plugin\yoast_schema_change_person_data', 999, 2 );
 
-function yoast_schema_change_person( $schema, $user_id ) {
+function yoast_schema_change_person_data( $schema, $user_id ) {
   if ( ! $user_id ) {
     return $schema;
   }
@@ -19,3 +21,22 @@ function yoast_schema_change_person( $schema, $user_id ) {
   return $schema;
 }
 
+// Person of a ProfilePage
+\add_filter( 'wpseo_schema_webpage', 'JSON_LD_Author_Plugin\yoast_schema_webpage', 999, 2);
+
+function yoast_schema_webpage( $schema, $context ) {
+  if ( $schema['@type'] !== 'ProfilePage' ) {
+    return $schema;
+  }
+
+  $user_id = $context->indexable->id;
+  $person_schema = get_person_schema_for_user( $context->indexable->id );
+
+  $person_schema['@type'] = 'Person';
+  $id_helper = new ID_Helper();
+  $person_schema['@id'] = $id_helper->get_user_schema_id( $user_id, $context );
+
+  $schema['mainEntity'] = $person_schema;
+
+  return $schema;
+}
