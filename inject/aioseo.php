@@ -5,7 +5,7 @@
  */
 namespace JSON_LD_Author_Plugin;
 
-\add_filter( 'aioseo_schema_output', 'JSON_LD_Author_Plugin\aioseo_author_schema_output', 1, 999 );
+\add_filter( 'aioseo_schema_output', 'JSON_LD_Author_Plugin\aioseo_author_schema_output', 999, 1 );
 function aioseo_author_schema_output($schema) {
   $count = find_all_in_multidimensional_array($schema, function($key, $value) {
     // if ( $key === 'author' ) {

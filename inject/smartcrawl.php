@@ -5,7 +5,7 @@
  */
 namespace JSON_LD_Author_Plugin;
 
-\add_filter( 'wds_schema_printer_schema_data', 'JSON_LD_Author_Plugin\smartcrawl_author_schema_output', 2, 999 );
+\add_filter( 'wds_schema_printer_schema_data', 'JSON_LD_Author_Plugin\smartcrawl_author_schema_output', 999, 2 );
 function smartcrawl_author_schema_output($schema) {
   // TODO: The contents of this file is basically the same as the contents of inject/aioseo.php
   // Update the Person
